@@ -66,7 +66,7 @@ app.post("/api/tables", function(req, res) {
 
         var newTable = req.body;
       
-        customerName.push(newTable);
+        newTable.push(customerName);
       
         res.json(newTable);
     }
@@ -75,7 +75,7 @@ app.post("/api/tables", function(req, res) {
 
         var newWait = req.body;
 
-        customerName.push(newWait);
+        newWait.push(customerName);
 
         res.json(newWait);
     }
