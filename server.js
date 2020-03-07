@@ -14,14 +14,17 @@ app.use(express.json());
 
 // DATA
 // =============================================================
-var tables = [
+var customer = [
     {
-        customerName,
-        phoneNumber,
-        customerEmail,
-        customerID,
+        "name": name,
+        "phoneNumber": phoneNumber,
+        "email": email,
+        "custID": customerID
     }
 ];
+
+const reserveArr = [];
+const waitArr = [];
 
 // Routes
 // =============================================================
