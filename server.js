@@ -16,10 +16,10 @@ app.use(express.json());
 // =============================================================
 var tables = [
     {
-        routeName,
-        name,
-        partySize,
-        arrivalTime,
+        customerName,
+        phoneNumber,
+        customerEmail,
+        customerID,
     }
 ];
 
