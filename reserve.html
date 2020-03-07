@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Reservation Page</title>
 
 	<!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+	</script>
 
 </head>
+
 <body>
 
 	<div class="container">
@@ -21,8 +26,10 @@
 			<br>
 
 			<div class="text-center">
-				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span
+							class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
+				<a href="/"><button type="button" class="btn btn-lg btn-default"><span
+							class="glyphicon glyphicon-home"></span></button></a>
 			</div>
 		</div>
 
@@ -68,24 +75,24 @@
 		</div>
 
 
-	    <footer class="footer">
-	      <div class="container">
-	        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
-	      </div>
-	    </footer>
+		<footer class="footer">
+			<div class="container">
+				<p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
+			</div>
+		</footer>
 
 	</div>
 
 </body>
+
 </html>
 
 <!-- BELOW CODE HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
-
-	$(".submit").on("click", function(){
-
+	$(".submit").on("click", function (event) {
+		event.preventDefault();
 		// Here we grab the form elements
-		var newReservation = {
+		var customer = {
 			customerName: $('#reserve_name').val().trim(),
 			phoneNumber: $('#reserve_phone').val().trim(),
 			customerEmail: $('#reserve_email').val().trim(),
@@ -103,29 +110,28 @@
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 
-	    $.post(currentURL + "/api/tables", newReservation,
-	    function(data){
+		$.post(currentURL + "/tables", customer).then(
+			function (data) {
 
-	    	// If a table is available... tell user they are booked.
-	    	if(data == true){
-	    		alert("Yay! You are officially booked!")
-	    	}
+				// If a table is available... tell user they are booked.
+				if (data == true) {
+					alert("Yay! You are officially booked!")
+				}
 
-	    	// If a table is available... tell user they on the waiting list.
-	    	if(data == false){
-	    		alert("Sorry you are on the wait list.")
-	    	}
+				// If a table is available... tell user they on the waiting list.
+				if (data == false) {
+					alert("Sorry you are on the wait list.")
+				}
 
-	    	// Clear the form when submitting
-    		$('#reserve_name').val("");
-			$('#reserve_phone').val("");
-			$('#reserve_email').val("");
-			$('#reserve_uniqueID').val("");
+				// Clear the form when submitting
+				$('#reserve_name').val("");
+				$('#reserve_phone').val("");
+				$('#reserve_email').val("");
+				$('#reserve_uniqueID').val("");
 
-	    });
+			});
 
-return false;
+		return false;
 
-});
-
+	});
 </script>
