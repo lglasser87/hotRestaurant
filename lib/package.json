@@ -1,0 +1,25 @@
+{
+  "name": "hotRestaurant",
+  "version": "1.0.0",
+  "description": "Basic App demonstrating Node and Express with jQuery",
+  "main": "server.js",
+  "dependencies": {
+    "require": "^2.4.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lglasser87/hotRestaurant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lglasser87/hotRestaurant/issues"
+  },
+  "homepage": "https://github.com/lglasser87/hotRestaurant#readme"
+}
