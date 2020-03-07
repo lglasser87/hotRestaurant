@@ -1,0 +1,83 @@
+<script type="text/javascript">
+//View tables function
+function viewTables() {
+    //ajax call
+    $.ajax({
+        url: "/api/tables",
+        method: "GET"
+    })
+        .then(function(tableData){
+            //console log
+            console.log(tableData);
+            console.log("---------------------------------");
+
+            //loop through tables
+            for (var i=0; i < tableData.length; i++) {
+                //variables
+                var tableList = $("#tableList");
+                var listItem = $("<li class='list-group-item mt-4'>");
+                //append table
+                listItem.append(
+                    $("<h2>").text("Table #" + (i+1)),
+                    $("<h2>").text("Name: " + tableData[i].customerName),
+                    $("<h2>").text("Phone: " + tableData[i].phoneNumber),
+                    $("<h2>").text("Email " + tableData[i].customerEmail),
+                    $("<h2>").text("ID: " + tableData[i].customerID)
+                );
+
+                tableList.append(listItem);
+            }
+        });
+}
+
+//View waitlist function
+function viewWaitlist(){
+    //ajax call
+    $.ajax({
+        url: "/api/reserve",
+        method: "GET"
+    })
+        .then(function(waitData){
+            //console log
+            console.log(waitData);
+            console.log("---------------------------------");
+
+            //loop through tables
+            for (var i=0; i < waitData.length; i++) {
+                //variables
+                var waitList = $("#waitList");
+                var listItem = $("<li class='list-group-item mt-4'>");
+                //append table
+                listItem.append(
+                    $("<h2>").text("Table #" + (i+1)),
+                    $("<h2>").text("Name: " + waitData[i].customerName),
+                    $("<h2>").text("Phone: " + waitData[i].phoneNumber),
+                    $("<h2>").text("Email " + waitData[i].customerEmail),
+                    $("<h2>").text("ID: " + waitData[i].customerID)
+                );
+
+                waitList.append(listItem);
+            }
+        });
+
+//Clear tables function
+// function clearTables(){
+//     //alert
+//     alert("Clearing tables...");
+//     //ajax call
+//     $.ajax({
+//         url: "/api/clear",
+//         method: "POST"
+//     })
+//         .then(function(){
+//             $("#tableList").empty();
+//             $("#waitList").empty();
+//         });
+// }
+
+//Call functions
+viewTables();
+viewWaitlist();
+//$("#clear").on("click", clearTables);
+
+  </script>
