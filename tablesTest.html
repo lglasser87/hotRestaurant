@@ -61,23 +61,23 @@ function viewWaitlist(){
         });
 
 //Clear tables function
-function clearTables(){
-    //alert
-    alert("Clearing tables...");
-    //ajax call
-    $.ajax({
-        url: "/api/clear",
-        method: "POST"
-    })
-        .then(function(){
-            $("#tableList").empty();
-            $("#waitList").empty();
-        });
-}
+// function clearTables(){
+//     //alert
+//     alert("Clearing tables...");
+//     //ajax call
+//     $.ajax({
+//         url: "/api/clear",
+//         method: "POST"
+//     })
+//         .then(function(){
+//             $("#tableList").empty();
+//             $("#waitList").empty();
+//         });
+// }
 
 //Call functions
 viewTables();
 viewWaitlist();
-$("#clear").on("click", clearTables);
+//$("#clear").on("click", clearTables);
 
   </script>
