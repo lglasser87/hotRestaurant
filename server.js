@@ -19,3 +19,22 @@ app.use(express.json());
 
 
 //Every request after that is sent to the waiting list.
+
+// Routes
+// =============================================================
+
+// Basic route that sends the user first to the home page
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
+  });
+  
+// Basic route that sends the user to see the tables reserved
+  app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+  });
+  
+  // Basic route that sends the user to the form that allows reservations
+  app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+  });
+  
